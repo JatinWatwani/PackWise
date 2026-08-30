@@ -1,5 +1,34 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
+
+
+# ---------------------------------------------------------------------------
+# Member 2 — OCR Output Contract
+# ---------------------------------------------------------------------------
+
+class OCRRegion(BaseModel):
+    """
+    A single text region detected by the OCR engine.
+    Produced by Member 2 (ocr_service) and consumed by:
+      - Member 3 (nlp_service) via the aggregated full_text
+      - The database (ocr_results.regions JSONB column)
+      - Member 4 (compliance) via evidence bounding boxes
+    """
+    text: str                           # The recognised text string
+    confidence: float = Field(ge=0.0, le=1.0)  # OCR confidence [0, 1]
+    bbox: List[int] = Field(min_length=4, max_length=4)
+    # bbox format: [x1, y1, x2, y2] — top-left to bottom-right pixel coords
+
+
+class OCRResult(BaseModel):
+    """
+    Full aggregated OCR output for one inspection (may span multiple images).
+    This is the return type of ocr_service.extract_text_from_images().
+    """
+    full_text: str                      # All regions joined — fed to Member 3 NLP
+    regions: List[OCRRegion]            # Individual regions — stored as JSONB
+
+
 
 class MetrologyData(BaseModel):
     # 1. Product Identity
