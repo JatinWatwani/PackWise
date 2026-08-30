@@ -1,4 +1,4 @@
-🚀 Project Master Context
+# 🚀 Project Master Context
 AI-Powered Product Intelligence, Compliance & Sustainability Platform
 
 Purpose of this document:
@@ -6,7 +6,7 @@ This is the master context for the entire project. Every team member should prov
 
 The AI must respect the architecture, ownership boundaries, interfaces, and rules defined here.
 
-1. 🎯 Project Vision
+## 1. 🎯 Project Vision
 
 We are building an AI-powered product inspection and intelligence platform.
 
@@ -44,7 +44,7 @@ STRUCTURED PRODUCT INFORMATION
                        ↓
                     USER
 
-2. 🧠 Core Product Idea
+## 2. 🧠 Core Product Idea
 
 The system should follow this principle:
 
@@ -90,7 +90,8 @@ What the issue is
 What evidence supports it
 What they can do
 Where appropriate disposal/collection facilities may be located
-3. 🏗️ High-Level Architecture
+
+## 3. 🏗️ High-Level Architecture
                          👤 USER / INSPECTOR
                                 │
                                 ↓
@@ -146,7 +147,7 @@ Where appropriate disposal/collection facilities may be located
                        │ MEMBER 6        │
                        └─────────────────┘
 
-4. 👥 Team Structure
+## 4. 👥 Team Structure
 Member 1 — Technical Lead + Backend + AI Integration
 Owns
 Overall architecture
@@ -174,7 +175,7 @@ Main responsibility
 
 Make every subsystem work together as one system.
 
-5. 👁️ Member 2 — Computer Vision + OCR
+## 5. 👁️ Member 2 — Computer Vision + OCR
 Responsibility
 
 Convert product images into reliable visual and textual information.
@@ -228,7 +229,8 @@ Member 2 should not decide:
 Whether food is healthy
 Whether a package is legally compliant
 What the final environmental score is
-6. 🧠 Member 3 — ML / NLP / Information Extraction
+
+## 6. 🧠 Member 3 — ML / NLP / Information Extraction
 Responsibility
 
 Convert OCR information into meaningful structured product data.
@@ -271,7 +273,8 @@ Structured outputs
 Pydantic
 Pandas
 NumPy
-7. 🤖 LLM / AI Usage
+
+## 7. 🤖 LLM / AI Usage
 
 An LLM may be used for information extraction and explanation.
 
@@ -313,7 +316,7 @@ LLM / NLP:
 
 The backend validates this output using Pydantic.
 
-8. ⚡ Groq / LLM Architecture
+## 8. ⚡ Groq / LLM Architecture
 
 Groq should be treated as an LLM inference/API service, not automatically as the project's OCR engine.
 
@@ -358,7 +361,7 @@ Rate limits
 
 Do not add an AI model simply because it is available.
 
-9. ⚖️ Member 4 — Compliance / Domain / Rules Engine
+## 9. ⚖️ Member 4 — Compliance / Domain / Rules Engine
 Responsibility
 
 Convert official regulations into machine-readable rules.
@@ -373,7 +376,7 @@ Member 3 answers:
 
 These are different responsibilities.
 
-10. Compliance Architecture
+## 10. Compliance Architecture
 Extracted Information
         ↓
 Rule Matching
@@ -414,7 +417,7 @@ Severity = HIGH
 
 The system should be able to show evidence for the decision.
 
-11. 🚨 Compliance AI Rule
+## 11. 🚨 Compliance AI Rule
 
 Never build:
 
@@ -444,7 +447,7 @@ COMPLIANCE RESULT
 
 AI can help explain the result, but the actual compliance decision should be based on defined rules.
 
-12. 🍎 Nutrition / Health Intelligence
+## 12. 🍎 Nutrition / Health Intelligence
 
 This is an additional feature of the platform.
 
@@ -518,7 +521,7 @@ Instead of:
 
 The system is providing nutritional information and decision support, not medical diagnosis.
 
-13. ♻️ Sustainability Intelligence
+## 13. ♻️ Sustainability Intelligence
 
 The system should also analyze the product's packaging.
 
@@ -573,7 +576,7 @@ The system should not claim that every plastic package is recyclable.
 
 Local waste infrastructure matters.
 
-14. 🗑️ Waste / Disposal Intelligence
+## 14. 🗑️ Waste / Disposal Intelligence
 
 The platform should answer:
 
@@ -614,7 +617,7 @@ Avoid:
 
 The disposal recommendation should be based on the identified material and the local waste system.
 
-15. 📍 Nearby Disposal Locations
+## 15. 📍 Nearby Disposal Locations
 
 This does not need an LLM.
 
@@ -652,7 +655,7 @@ The frontend can provide:
 [Find Nearby]
 [Open Map]
 
-16. 🌍 Environmental Impact
+## 16. 🌍 Environmental Impact
 
 The system may provide an environmental category such as:
 
@@ -677,7 +680,7 @@ Do NOT invent exact carbon-footprint numbers without reliable lifecycle data.
 
 If an estimate is eventually introduced, the data source and assumptions must be visible.
 
-17. 🎨 Member 5 — Frontend / Product
+## 17. 🎨 Member 5 — Frontend / Product
 Responsibility
 
 Make the complex system understandable to a user or judge.
@@ -712,7 +715,8 @@ TanStack Query
 React Hook Form
 Zod
 Recharts
-18. Frontend UX Principle
+
+## 18. Frontend UX Principle
 
 Never show only:
 
@@ -752,7 +756,7 @@ Recyclability: ⚠️ Limited / local-system dependent
 
 [Disposal Guide]
 
-19. 🗄️ Member 1 — Database Architecture
+## 19. 🗄️ Member 1 — Database Architecture
 
 Use:
 
@@ -799,7 +803,7 @@ User
 
 Do not create unnecessary tables until they are actually needed.
 
-20. 🔌 Backend API
+## 20. 🔌 Backend API
 
 Member 1 owns the central API.
 
@@ -822,7 +826,7 @@ POST /api/v1/inspections/{id}/review
 
 The exact API should be kept as small as practical.
 
-21. 📦 Common Data Contracts
+## 21. 📦 Common Data Contracts
 
 Pydantic should be used to establish contracts between services.
 
@@ -856,7 +860,7 @@ class ComplianceViolation(BaseModel):
 
 These contracts prevent different team members from creating incompatible data formats.
 
-22. 🧩 Service Architecture
+## 22. 🧩 Service Architecture
 
 Do not put the entire application into one file.
 
@@ -895,7 +899,7 @@ backend/
 ├── Dockerfile
 └── requirements.txt
 
-23. 🔄 Backend Orchestration
+## 23. 🔄 Backend Orchestration
 
 Member 1's central responsibility is orchestration.
 
@@ -933,7 +937,7 @@ The exact implementation can differ.
 
 The architectural principle should remain.
 
-24. 🧪 Member 6 — Data / QA / DevOps
+## 24. 🧪 Member 6 — Data / QA / DevOps
 Responsibility
 
 Make sure the system actually works and can prove that it works.
@@ -987,7 +991,8 @@ Health checks
 Error monitoring
 GitHub Actions
 Backup strategy
-25. 🔐 Authentication
+
+## 25. 🔐 Authentication
 
 The backend should control protected operations.
 
@@ -1014,7 +1019,8 @@ JWT / Supabase Auth
 Roles
 Protected endpoints
 Secure environment variables
-26. 🔑 Environment Variables
+
+## 26. 🔑 Environment Variables
 
 Never hardcode secrets.
 
@@ -1038,7 +1044,7 @@ Use secure environment/secrets configuration in deployment.
 
 Never commit secrets to GitHub.
 
-27. 🐳 Docker
+## 27. 🐳 Docker
 
 The backend should be reproducible.
 
@@ -1062,7 +1068,7 @@ Networking
 
 Do not introduce Kubernetes unless there is a genuine requirement.
 
-28. 🧪 Testing Strategy
+## 28. 🧪 Testing Strategy
 
 Test individual components:
 
@@ -1096,7 +1102,7 @@ Response
 
 Finally test the complete frontend flow.
 
-29. 🌐 Final End-to-End Flow
+## 29. 🌐 Final End-to-End Flow
 
 The complete system should eventually behave like:
 
@@ -1150,7 +1156,7 @@ The complete system should eventually behave like:
                            ↓
                     👤 USER RESULT
 
-30. 📊 Example Final User Result
+## 30. 📊 Example Final User Result
 
 The frontend could eventually show:
 
@@ -1219,7 +1225,7 @@ collection/recycling channel.
 [Find Nearby]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-31. 🧠 AI vs Deterministic Logic
+## 31. 🧠 AI vs Deterministic Logic
 
 This distinction is extremely important.
 
@@ -1247,7 +1253,7 @@ Principle
 
 Use AI where interpretation is required. Use deterministic logic where correctness and repeatability are required.
 
-32. 🤝 Team Development Rules
+## 32. 🤝 Team Development Rules
 Rule 1 — Each member owns a subsystem
 
 The owner should understand their code.
@@ -1305,7 +1311,7 @@ Teach → Review → Pair → Fix together
 
 Do not automatically replace their entire implementation.
 
-33. 🧪 Build Strategy
+## 33. 🧪 Build Strategy
 
 Do not wait until every subsystem is finished.
 
@@ -1391,7 +1397,7 @@ Docker
  ↓
 Deployment
 
-34. 🎬 Main Demo Story
+## 34. 🎬 Main Demo Story
 
 The final demo should be simple.
 
@@ -1449,7 +1455,7 @@ Evidence
 +
 Nearby Locations
 
-35. 🏆 What Makes This Project Strong
+## 35. 🏆 What Makes This Project Strong
 
 The project should NOT be presented as:
 
@@ -1471,7 +1477,7 @@ Rule-Based Evaluation
       ↓
 Actionable Recommendation
 
-36. 🎯 Definition of Done
+## 36. 🎯 Definition of Done
 
 The project is considered successful when:
 
@@ -1492,7 +1498,8 @@ Metrics demonstrate system performance.
 The project can be deployed reproducibly.
 Every member understands their subsystem.
 No single member is required to rewrite the entire project.
-37. 👨‍💻 AI Instructions for This Project
+
+## 37. 👨‍💻 AI Instructions for This Project
 
 When any team member gives this document to an AI, the AI should follow these rules:
 
@@ -1516,7 +1523,8 @@ Prefer small, testable components.
 Include error handling for external APIs.
 Never hardcode API keys or secrets.
 If requirements are ambiguous, ask for clarification instead of inventing architecture.
-38. 👑 Technical Lead Principle
+
+## 38. 👑 Technical Lead Principle
 
 The Technical Lead is not the person who writes everybody's code.
 
@@ -1545,7 +1553,7 @@ Not:
 
 One person builds six subsystems while everyone else watches.
 
-🚀 Final Architecture Summary
+## 🚀 Final Architecture Summary
                          PRODUCT IMAGE
                               │
                               ↓
@@ -1604,7 +1612,7 @@ One person builds six subsystems while everyone else watches.
               QA + DATA + EVALUATION
                     + DEVOPS
 
-🧩 Team in One Line
+## 🧩 Team in One Line
 
 Member 2 sees it.
 Member 3 understands it.
